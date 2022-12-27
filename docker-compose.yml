@@ -1,0 +1,6 @@
+services:
+  slam:
+    image: zachyu1010/ubuntu_18.04_slam_env
+    volumes:
+      - ~/project/slambook2:/project/slambook2
+    command: bash
