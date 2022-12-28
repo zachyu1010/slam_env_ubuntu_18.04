@@ -1,0 +1,12 @@
+https://gist.github.com/sorny/969fe55d85c9b0035b0109a31cbcb088
+
+1. brew cask install xquartz
+2. open -a XQuartz -> Security -> Allow connection from network clients
+3. restart computer
+4. open -a XQuartz
+5. check, ps aux | grep Xquartz, /opt/X11/bin/Xquartz :0 -listen tcp
+6. xhost + (after restart of X11)
+7. test X11 forwarding
+7.1 $ docker pull sshipway/xclock
+7.2 $ ip=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
+7.3 $ docker run -e DISPLAY=$ip:0 sshipway/xclock
