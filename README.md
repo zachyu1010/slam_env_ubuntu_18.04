@@ -23,7 +23,8 @@ host mac setting:
     4. open -a XQuartz
     5. check, ps aux | grep Xquartz, /opt/X11/bin/Xquartz :0 -listen tcp
     6. xhost + (after restart of X11)
-    7. test X11 forwarding
+    7. test X11 forwarding and run slambook2/ch3
     7.1 $ docker pull sshipway/xclock
     7.2 $ ip=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
-
+    7.3 docker run -it -e DISPLAY=$ip:0 -v ~/project/slambook2:/project/slambook2 zachyu1010/ubuntu_18.04_slam_env:v0.1_x11
+ver 0.1 zachyu1010/ubuntu_18.04_slam_env:v0.1_x11
