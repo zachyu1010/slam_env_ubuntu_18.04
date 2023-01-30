@@ -1,6 +1,6 @@
 ver 0.0, ubuntu:18.04
 apt-get update
-apt-get install -y g++'          
+apt-get install -y g++'
 apt-get install -y cmake'
 apt-get install -y libeigen3-dev'
 apt-get install -y vim'
@@ -26,5 +26,5 @@ host mac setting:
     7. test X11 forwarding and run slambook2/ch3
     7.1 $ docker pull sshipway/xclock
     7.2 $ ip=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
-    7.3 docker run -it -e DISPLAY=$ip:0 -v ~/project/slambook2:/project/slambook2 zachyu1010/ubuntu_18.04_slam_env:v0.1_x11
-ver 0.1 zachyu1010/ubuntu_18.04_slam_env:v0.1_x11
+    7.3 cmd: 
+        docker run -it -e DISPLAY=$ip:0 -v ~/project/slambook2:/project/slambook2 zachyu1010/ubuntu_18.04_slam_env:v0.1_x11
