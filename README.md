@@ -1,11 +1,19 @@
+run:
+    docker run -it -e DISPLAY=$ip:0 -v ~/project/slambook2:/project/slambook2 zachyu1010/ubuntu_18.04_slam_env:v0.3.1_cvlib
+    docker run -it -e DISPLAY=$ip:0 -v ~/project/slambook2:/project/slambook2 zachyu1010/ubuntu_18.04_slam_env:v0.2_sophus
+    docker run -it -e DISPLAY=$ip:0 -v ~/project/slambook2:/project/slambook2 zachyu1010/ubuntu_18.04_slam_env:v0.1_x11
+
 base command:
     1. from container to image
         $docker container commit 6372e49c75ba ubuntu_18.04_slam_env:v0.2_sophus
     2. list/rm image
         $docker image ls
         $docker image rm image_id
+        $docker image tag d583c3ac45fd myname/server:latest
     3. upload image to dockerhub registry
         $docker push zachyu1010/ubuntu_18.04_slam_env:v0.2_sophus
+    4. login docker hub
+        #docker login
 
 the base docker image:
     ver 0.0, ubuntu:18.04
@@ -29,6 +37,10 @@ install pckages
     apt-get install doxygen
     apt-get install -y gdb
     apt-get install locales
+    apt-get install -y software-properties-common
+    add-apt-repository 'deb http://security.ubuntu.com/ubuntu xenial-security main'
+    apt-get install -y build-essential libgtk2.0-dev libvtk6-dev libjpeg-dev libtiff5-dev libjasper-dev libopenexr-dev libtbb-dev
+    apt-get install -y libgoogle-glog-dev
 
 language settings:
     .bashrc:
@@ -56,9 +68,11 @@ host mac x11 setting:
 Tutorial library:
     ch3: make and install Pangolin library in slambook2/3rdparty folder
     ch4: make and install Sophus libray in slambook2/3rdparty folder
+    ch5: make and install openCV from opencv.org(3rdparty)
+    ch6: 1. install glog 2. make and install ceres-solver(3rdparty) 3. make and intall g2o(3rdparty).
+         Note: revise CMakeList.txt and set build type to "Debug" and optimization to "O0"
+            set(CMAKE_BUILD_TYPE Debug)
+            set(CMAKE_CXX_FLAGS "-std=c++14 -O0")
 
-run:
-    docker run -it -e DISPLAY=$ip:0 -v ~/project/slambook2:/project/slambook2 zachyu1010/ubuntu_18.04_slam_env:v0.1_x11
-    docker run -it -e DISPLAY=$ip:0 -v ~/project/slambook2:/project/slambook2 zachyu1010/ubuntu_18.04_slam_env:v0.2_sophus
 
 
