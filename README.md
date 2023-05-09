@@ -1,11 +1,12 @@
 run:
+    docker run -it --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -e DISPLAY=$ip:0 -v ~/project/slambook2:/project/slambook2  zachyu1010/ubuntu_18.04_slam_en:v0.5_g2o
     docker run -it -e DISPLAY=$ip:0 -v ~/project/slambook2:/project/slambook2 zachyu1010/ubuntu_18.04_slam_env:v0.3.1_cvlib
     docker run -it -e DISPLAY=$ip:0 -v ~/project/slambook2:/project/slambook2 zachyu1010/ubuntu_18.04_slam_env:v0.2_sophus
     docker run -it -e DISPLAY=$ip:0 -v ~/project/slambook2:/project/slambook2 zachyu1010/ubuntu_18.04_slam_env:v0.1_x11
 
 base command:
     1. from container to image
-        $docker container commit 6372e49c75ba ubuntu_18.04_slam_env:v0.2_sophus
+        $docker container commit 6372e49c75ba zachyu1010/ubuntu_18.04_slam_env:v0.2_sophus
     2. list/rm image
         $docker image ls
         $docker image rm image_id
@@ -14,21 +15,24 @@ base command:
         $docker push zachyu1010/ubuntu_18.04_slam_env:v0.2_sophus
     4. login docker hub
         #docker login
+    5. save/load an image offline
+        $docker save --output ubuntu_22.04.tar d324297dc3ee
+        $docker load --input ubuntu_22.04.tar
 
 the base docker image:
     ver 0.0, ubuntu:18.04
 
 install pckages
     apt-get update
-    apt-get install -y g++'
-    apt-get install -y cmake'
-    apt-get install -y libeigen3-dev'
-    apt-get install -y vim'
-    apt-get install -y libglew-dev'
-    apt-get install -y make'
-    apt-get install -y python'
-    apt-get install -y python-dev'
-    apt-get install -y python-pip'
+    apt-get install -y g++
+    apt-get install -y cmake
+    apt-get install -y libeigen3-dev
+    apt-get install -y vim
+    apt-get install -y libglew-dev
+    apt-get install -y make
+    apt-get install -y python
+    apt-get install -y python-dev
+    apt-get install -y python-pip
     apt-get install -y x11-apps
     apt-get install -y libglew-dev
     apt-get install libgl1-mesa-dev
@@ -41,6 +45,7 @@ install pckages
     add-apt-repository 'deb http://security.ubuntu.com/ubuntu xenial-security main'
     apt-get install -y build-essential libgtk2.0-dev libvtk6-dev libjpeg-dev libtiff5-dev libjasper-dev libopenexr-dev libtbb-dev
     apt-get install -y libgoogle-glog-dev
+    apt-get install -y liblapack-dev libsuitesparse-dev libcxsparse3 libgf lags-dev libgoogle-glog-dev libgtest-dev 
 
 language settings:
     .bashrc:
