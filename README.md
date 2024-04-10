@@ -10,7 +10,7 @@ base command:
     2. list/rm image
         $docker image ls
         $docker image rm image_id
-        $docker image tag d583c3ac45fd myname/server:latest
+        $docker image tag d583c3ac45fd account/image_name:latest
     3. upload image to dockerhub registry
         $docker push zachyu1010/ubuntu_18.04_slam_env:v0.2_sophus
     4. login docker hub
